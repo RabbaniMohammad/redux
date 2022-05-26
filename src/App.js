@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { add, sub, mul, div } from "./actions/index";
 import { useState } from "react";
+import Add from "./Components/Add";
 export default function App() {
   const myState = useSelector((state) => state.upDown);
   const dispatch = useDispatch();
@@ -16,21 +17,45 @@ export default function App() {
   return (
     <>
       <div>
-        <input type="number" onChange={(e) => getValue(e)} />
-        <input type="number" onChange={(e) => valSecond(e)} />
-        <button onClick={() => dispatch(add([val, sval]))}>Add</button> <br />
-        <input type="number" onChange={(e) => getValue(e)} />
-        <input type="number" onChange={(e) => valSecond(e)} />
-        <button onClick={() => dispatch(sub([val, sval]))}>Subtract</button>
-        <br />
-        <input type="number" onChange={(e) => getValue(e)} />
-        <input type="number" onChange={(e) => valSecond(e)} />
-        <button onClick={() => dispatch(mul([val, sval]))}>Multiply</button>
-        <br />
-        <input type="number" onChange={(e) => getValue(e)} />
-        <input type="number" onChange={(e) => valSecond(e)} />
-        <button onClick={() => dispatch(div([val, sval]))}>Division</button>
-        <br />
+        <Add
+          getValue={getValue}
+          method1={add}
+          method2={valSecond}
+          dispatch={dispatch}
+          val={val}
+          sval={sval}
+          name="Add"
+        />
+        <Add
+          getValue={getValue}
+          method1={sub}
+          method2={valSecond}
+          dispatch={dispatch}
+          val={val}
+          sval={sval}
+          name="Sub"
+        />
+
+        <Add
+          getValue={getValue}
+          method1={mul}
+          method2={valSecond}
+          dispatch={dispatch}
+          val={val}
+          sval={sval}
+          name="Mul"
+        />
+
+        <Add
+          getValue={getValue}
+          method1={div}
+          method2={valSecond}
+          dispatch={dispatch}
+          val={val}
+          sval={sval}
+          name="Div"
+        />
+
         <input type="text" value={myState} />
       </div>
     </>
